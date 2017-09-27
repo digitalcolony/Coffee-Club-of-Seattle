@@ -1,0 +1,94 @@
+@CHARSET "ISO-8859-1";
+thead tr {
+  background-color: ActiveCaption;
+  color: CaptionText;
+}
+p,
+th,
+td {
+  vertical-align: top;
+  font-family: "Tahoma", Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  padding: 3px;
+}
+table,
+td {
+  border: 1px solid silver;
+}
+table {
+  border-collapse: collapse;
+}
+/*thead .col0 {width: 275px;}*/
+thead .col1 {
+  width: 78px;
+}
+thead .col2 {
+  width: 99px;
+}
+thead .col3 {
+  width: 99px;
+}
+thead .col4 {
+  width: 47px;
+  text-align: left;
+}
+td.col4 {
+  text-align: right;
+}
+table.tablesorter tbody tr.Inactive {
+  background-color: #d3d3d3 !important;
+  display: none;
+}
+
+/* tables */
+table.tablesorter {
+  margin: 10px 0pt 15px;
+  text-align: left;
+}
+table.tablesorter thead tr th,
+table.tablesorter tfoot tr th {
+  border: 1px solid #fff;
+  font-size: 11pt;
+  padding: 4px;
+}
+table.tablesorter thead tr .header {
+  background-image: url(bg.gif);
+  background-repeat: no-repeat;
+  background-position: center right;
+  cursor: pointer;
+}
+table.tablesorter tbody td {
+  color: #3d3d3d;
+  padding: 4px;
+  vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+  background-color: #f0f0f6;
+}
+table.tablesorter thead tr .headerSortUp {
+  background-image: url(asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+  background-image: url(desc.gif);
+}
+table.tablesorter thead tr .headerSortDown,
+table.tablesorter thead tr .headerSortUp {
+  background-color: #ffc300;
+}
+
+/* Map */
+#map {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+  max-width: 90%;
+  margin: 0 auto;
+}
+#map iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
