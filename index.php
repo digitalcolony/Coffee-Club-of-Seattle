@@ -46,27 +46,19 @@
       </thead>
       <tbody>
 <?php
-	$sql = "SELECT VC.venueName AS Venue, VC.venueID, VC.City, VC.venueStatus AS Status, 
-		DATE_FORMAT(MIN(eventDate),'%m-%d-%Y') AS 'First', 
-		DATE_FORMAT(MAX(eventDate),'%m-%d-%Y') AS 'Last', COUNT(*) as 'Total'
-	FROM venuesclean VC
-		INNER JOIN venuesmapped VM ON VC.venueID = VM.venueIDmapped
-		INNER JOIN eventsclean E ON E.venueID = VM.venueID
-	WHERE VC.venueType = 'Coffee'	
-	GROUP BY VC.venuename 
-	ORDER BY COUNT(*) DESC";
+	$sql = "SELECT venue, venueID, city, status, first, last, total FROM vwAllStandardVenues";
 
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
-			echo "<tr class='". $row["Status"]. "'>";
-			echo "<td class='col0'><a href='cafe.php?id=".$row["venueID"]."'>". $row["Venue"]. "</a></td>";
-			echo "<td class='col1'>". $row["City"]. "</td>";
-			echo "<td class='col2'>". $row["First"]. "</td>";
-			echo "<td class='col3'>". $row["Last"]. "</td>";
-			echo "<td class='col4'>". $row["Total"]. "</td>";
+			echo "<tr class='". $row["status"]. "'>";
+			echo "<td class='col0'><a href='cafe.php?id=".$row["venueID"]."'>". $row["venue"]. "</a></td>";
+			echo "<td class='col1'>". $row["city"]. "</td>";
+			echo "<td class='col2'>". $row["first"]. "</td>";
+			echo "<td class='col3'>". $row["last"]. "</td>";
+			echo "<td class='col4'>". $row["total"]. "</td>";
 			echo "</tr>";		
 		}
 	} else {
@@ -76,9 +68,9 @@
 ?>
       </tbody>
     </table>
-<p><?php echo $result->num_rows; ?> venues.</p>
+<p><?php echo $result->num_rows; ?> venues (includes Inactive).</p>
 	<script>
-		// toggle visibility of Inactive Cafes 
+		// toggle visibility of Inactive Venues 
 		$( "button" ).click(function() {			
 			$( ".Inactive" ).toggle();
 			$(this).text(function(i, text){

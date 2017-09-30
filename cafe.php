@@ -68,12 +68,8 @@
       </thead>
       <tbody>
  		<?php 
- 			$sql = "SELECT E.eventLink, E.eventName, DATE_FORMAT(E.eventDate,'%m-%d-%Y') AS eDate
-	 			FROM venuesclean VC
-	 			INNER JOIN venuesmapped VM ON VC.venueID = VM.venueIDmapped
-	 			INNER JOIN eventsclean E ON E.venueID = VM.venueID
-	 			WHERE VM.venueIDmapped = ". $venueID. " ORDER BY eventDate DESC";
-	 			
+	 		$sql = "SELECT eventLink, eventName, DATE_FORMAT(eventDate,'%m-%d-%Y') AS eventDate 
+			 				FROM vwAllEvents WHERE venueID = ". $venueID. " ORDER BY eventDate DESC";
  			$result = $conn->query($sql);
  			$j = 0;
  			
@@ -83,7 +79,7 @@
  					echo "<tr>";
  					echo "<td>". ++$j . "</td>";
  					echo "<td class='col0'><a href='".$row["eventLink"]."' target='_blank'>". htmlentities($row["eventName"]). "</a></td>";
- 					echo "<td class='col1'>". $row["eDate"]. "</td>";
+ 					echo "<td class='col1'>". $row["eventDate"]. "</td>";
  					echo "</tr>";
  				}
  			}

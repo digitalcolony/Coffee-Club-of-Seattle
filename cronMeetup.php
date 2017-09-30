@@ -126,9 +126,10 @@ for ($j=$offset; $j<=$offset+1 ;$j++)
                     $conn->query($sql4);
 
                     // Add venue to venuesclean with 2 more fields. 
+                    // All venues are considered 'Standard'. If venue is a priate resident or non-standard, change to 'Other' later.
                     $sql5 = "INSERT INTO venuesclean (venueID, lat, lon, zip, city, VenueName, state, 
                             country, address_1, address_2, venueType, venueStatus)
-                        SELECT venueID, lat, lon, zip, city, VenueName, state, country, address_1, address_2, 'Coffee', 'Active'
+                        SELECT venueID, lat, lon, zip, city, VenueName, state, country, address_1, address_2, 'Standard', 'Active'
                         FROM venues
                         WHERE venueID = ".$thisVenueID;
                     $conn->query($sql5);

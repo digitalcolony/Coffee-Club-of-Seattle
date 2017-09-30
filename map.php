@@ -39,15 +39,9 @@
       });
 
     <?php 
-        $sql = "SELECT VC.venueName AS Venue, VC.venueID, lat, lon, DATE_FORMAT(MIN(eventDate),'%m-%d-%Y') AS 'First', 
-            DATE_FORMAT(MAX(eventDate),'%m-%d-%Y') AS 'Last', COUNT(*) as 'Total'
-        FROM venuesclean VC
-            INNER JOIN venuesmapped VM ON VC.venueID = VM.venueIDmapped
-            INNER JOIN eventsclean E ON E.venueID = VM.venueID
-        WHERE VC.venueType = 'Coffee'	
-        AND VC.venueStatus = 'Active'
-        GROUP BY VC.venuename 
-        ORDER BY COUNT(*) ";
+        $sql = "SELECT venue, venueID, lat, lon, first, last, total 
+            FROM vwAllStandardVenues
+            WHERE status = 'Active'";
 
         $result = $conn->query($sql);
 
@@ -56,13 +50,11 @@
                 echo "var m = mapObj.addMarker({";
                 echo "  lat: ".$row['lat'].",";
                 echo "  lng: ".$row['lon'].",";
-                echo "  label: '".$row['Total']."',";
-                echo " title: '".addslashes($row['Venue'])."', ";
-
+                echo "  label: '".$row['total']."',";
+                echo " title: '".addslashes($row['venue'])."', ";
                 echo " infoWindow: { ";
-                echo " content: '<h4>".addslashes($row['Venue'])."</h4> "; 
-                echo " <div><a href=\"cafe.php?id=".$row['venueID']."\">Last: ".$row['Last']."</a></div>', ";
-                //echo " last: ".$row['last']."\"</a></div>',";
+                echo " content: '<h4>".addslashes($row['venue'])."</h4> "; 
+                echo " <div><a href=\"cafe.php?id=".$row['venueID']."\">Last: ".$row['last']."</a></div>', ";
                 echo " maxWidth: 100 } ";
                 echo "});";               
             } 
