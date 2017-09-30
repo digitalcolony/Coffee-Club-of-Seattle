@@ -84,6 +84,7 @@
             INNER JOIN (SELECT COUNT(*) as TotalEvents FROM eventsclean ) AS SUM_Table
             GROUP BY MONTH(eventDate), MONTHNAME(eventDate)
             ORDER BY MonthNumber";
+        
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
