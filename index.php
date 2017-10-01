@@ -77,6 +77,8 @@
 					return text === "Display Inactive" ? "Hide Inactive" : "Display Inactive";
 			})
 		});
-	</script>		    
+	</script>
+	<p>This code is available to use on <a target="_blank" href="https://github.com/digitalcolony/Coffee-Club-of-Seattle">GitHub</a>.</p>  
+	<p></p>
   </body>
 </html>
