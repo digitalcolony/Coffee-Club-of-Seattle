@@ -46,7 +46,7 @@
       </thead>
       <tbody>
 <?php
-	$sql = "SELECT venue, venueID, city, status, first, last, total FROM vwAllStandardVenues";
+	$sql = "SELECT venue, venueID, city, status, first, last, total FROM vwAllStandardVenues ORDER BY total DESC, venue";
 
 	$result = $conn->query($sql);
 

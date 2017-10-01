@@ -68,7 +68,7 @@
       </thead>
       <tbody>
  		<?php 
-	 		$sql = "SELECT eventLink, eventName, DATE_FORMAT(eventDate,'%m-%d-%Y') AS eventDate 
+	 		$sql = "SELECT eventLink, eventName, DATE_FORMAT(eventDate,'%m-%d-%Y') AS eventDateFormat
 			 				FROM vwAllEvents WHERE venueID = ". $venueID. " ORDER BY eventDate DESC";
  			$result = $conn->query($sql);
  			$j = 0;
@@ -79,7 +79,7 @@
  					echo "<tr>";
  					echo "<td>". ++$j . "</td>";
  					echo "<td class='col0'><a href='".$row["eventLink"]."' target='_blank'>". htmlentities($row["eventName"]). "</a></td>";
- 					echo "<td class='col1'>". $row["eventDate"]. "</td>";
+ 					echo "<td class='col1'>". $row["eventDateFormat"]. "</td>";
  					echo "</tr>";
  				}
  			}

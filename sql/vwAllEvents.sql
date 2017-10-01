@@ -21,4 +21,3 @@ VIEW `vwAllEvents` AS
         ((`venuesclean` `V`
         JOIN `venuesmapped` `VM` ON ((`V`.`venueID` = `VM`.`venueIDmapped`)))
         JOIN `eventsclean` `E` ON ((`E`.`venueID` = `VM`.`venueID`)))
-    ORDER BY `E`.`eventID`

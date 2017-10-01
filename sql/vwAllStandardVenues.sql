@@ -17,4 +17,3 @@ VIEW `vwAllStandardVenues` AS
     WHERE
         (`VC`.`venueType` = 'Standard')
     GROUP BY `VC`.`venueName`
-    ORDER BY COUNT(0) DESC
