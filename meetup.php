@@ -155,6 +155,13 @@ class Meetup
     	
     	return false;
     }
+    /**
+     * MAS:
+     */
+    public function getAttendance(array $parameters = array()) 
+    {
+        return $this->get('/:urlname/events/:id/attendance', $parameters);
+    }
    /**
     * Stub for updating an event
     *

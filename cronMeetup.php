@@ -135,7 +135,7 @@ for ($j=$offset; $j<=$offset+1 ;$j++)
                     $conn->query($sql5);
                     
                     // I only want to receive an alert when a new venue is added.
-                    $mailMessage = $thisVenueName." added as a new venue.";
+                    $mailMessage = $thisVenueName." added as a new venue: ".$thisVenueID;
                     mail($configs->CRON_EMAIL,"Meetup Venue Alert",$mailMessage);
                 }
                 
