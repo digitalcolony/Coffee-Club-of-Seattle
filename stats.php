@@ -17,13 +17,50 @@
 		<meta property="og:site_name" content="<?php echo($configs->GROUP_NAME); ?>" />
 		<meta property="fb:app_id" content="<?php echo($configs->FACEBOOK_APP_ID); ?>" />
 	    <link rel="stylesheet" type="text/css" href="i/coffee.css">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    
+        <link rel="stylesheet" href="i/cal-heatmap.css" />
+    <script type="text/javascript" src="i/cal-heatmap.js"></script>
   </head>
   <body>
     <p><a href=".">Venue Report</a> | <a href="map.php">View Map</a></p>
     <p>Statistical report for the <a href="https://www.meetup.com/<?php echo($configs->GROUP_URLNAME); ?>/">
         <?php echo($configs->GROUP_NAME); ?></a>.</p>
 
+    <h3>Activity Heatmap</h3>    
+    <div id="cal-heatmap"></div>
+            <script type="text/javascript">
+                var cal = new CalHeatMap();
+                cal.init({
+                    itemSelector: "#cal-heatmap",
+                    data: "i/meetups.json",
+                    start: new Date("2006-07-15"),
+                    considerMissingDataAsZero: true,
+                    range: 13,
+                    domain: "year",
+                    subDomain: "month",
+                    cellSize: 20,
+                    tooltip: true,
+                    verticalOrientation: true,
+                    domainDynamicDimension: true,
+                    previousSelector: "#cal-heatmap-PreviousDomain-selector",
+                    nextSelector: "#cal-heatmap-NextDomain-selector",
+                    label: {
+                        position: "right",
+                        offset: {
+                            x: 0,
+                            y: 15
+                        }
+                    },
+                    legendColors: {
+                        min: "#efefef",
+                        max: "steelblue",
+                        empty: "white"
+                    },
+                    legend: [1, 5, 10, 15]
+                });
+            </script>
     <h3>Events by Day of the Week</h3>
 
     <table id="myTable" class="tablesorter">
