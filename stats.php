@@ -22,14 +22,17 @@
     
         <link rel="stylesheet" href="i/cal-heatmap.css" />
     <script type="text/javascript" src="i/cal-heatmap.js"></script>
+    <script type="text/javascript" src="i/jquery-latest.js"></script>
   </head>
   <body>
     <p><a href=".">Venue Report</a> | <a href="map.php">View Map</a></p>
     <p>Statistical report for the <a href="https://www.meetup.com/<?php echo($configs->GROUP_URLNAME); ?>/">
         <?php echo($configs->GROUP_NAME); ?></a>.</p>
 
-    <h3>Activity Heatmap</h3>    
-    <div id="cal-heatmap"></div>
+    <h3>Activity Heatmap</h3> 
+    <div id="heatmap-holder" style="padding-left:44px"> 
+        <div id="cal-heatmap"></div>
+    </div>  
             <script type="text/javascript">
                 var cal = new CalHeatMap();
                 cal.init({
@@ -58,7 +61,11 @@
                         max: "steelblue",
                         empty: "white"
                     },
-                    legend: [1, 5, 10, 15]
+                    legend: [1, 5, 10, 15],
+                    onClick: function(date, nb) {
+                        var monthPage = "monthly.php?d=" + date.getFullYear() + date.getMonth();
+                        window.location.href = monthPage;
+	                }
                 });
             </script>
     <h3>Events by Day of the Week</h3>
