@@ -42,7 +42,7 @@
   <p><a href=".">Venue Report</a>
   <h3>Meetups for <?php echo $monthName." ".$year ?> </h3>
   
-  <form action="monthly">
+ <!-- <form action="monthly">
       <select name="month" id="month">
           <option value="1">January</option>
           <option value="2">February</option>
@@ -57,7 +57,7 @@
           <option value="11">November</option>
           <option value="12">December</option> 
       </select>
-  </form>
+  </form> -->
   <table>
       <thead>
         <tr>
