@@ -165,6 +165,7 @@
             ORDER BY YearNumber";
         $result = $conn->query($sql);
 
+        $total_events = 0;
         if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
@@ -172,7 +173,9 @@
                 echo "<td>". $row["YearNumber"]. "</td>";
                 echo "<td>". $row["EventsThatYear"]. "</td>";               
                 echo "</tr>";		
+                $total_events += $row["EventsThatYear"];
             }
+            echo "<tr><th>Total</th><th>".$total_events."</th></tr>";
         } else {
             echo "<tr><td>Database Error</td></tr>";
         }
