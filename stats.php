@@ -175,7 +175,7 @@
                 echo "</tr>";		
                 $total_events += $row["EventsThatYear"];
             }
-            echo "<tr><th>Total</th><th>".$total_events."</th></tr>";
+            echo "<tr><td><strong>Total</strong></td><td><strong>".$total_events."</strong></td></tr>";
         } else {
             echo "<tr><td>Database Error</td></tr>";
         }
