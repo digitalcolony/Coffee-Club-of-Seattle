@@ -183,5 +183,6 @@
         ?>
       </tbody>
     </table>     
+    <p><a href="cronMeetup.php" rel="nofollow" style="color: #ffffff;">Update Now</a></p>
   </body>
 </html>
