@@ -1,7 +1,25 @@
 <?php 
     //MySQL Database connection 
     $configs = include("config.php");
-	include "connect.php";
+    include "connect.php";
+    
+    // build JSON file for Activity HeatMap
+    $sql = "SELECT epochDate, eventCount FROM vwHeatmapData";
+    $result = $conn->query($sql);     
+    $heatmapArray = array();   
+    if ($result->num_rows == 0) { 
+        echo "<p>No data</p>";
+    } else {
+        while($row = $result->fetch_assoc()) {
+            $thisEpochDate = $row["epochDate"];
+            $thisEventCount = $row["eventCount"];     
+            $heatmapArray[$thisEpochDate] =  $thisEventCount;
+        };
+    }
+
+    $fp = fopen('i/meetups.json', 'w');
+    fwrite($fp, json_encode($heatmapArray, JSON_NUMERIC_CHECK));
+    fclose($fp);
 ?>
 <!DOCTYPE html>
 <html>
