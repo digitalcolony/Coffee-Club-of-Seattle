@@ -152,29 +152,6 @@ for ($j=$offset; $j<=$offset+1 ;$j++)
              
         }
 }
-
-// Part 2
-
-$sql = "SELECT epochDate, eventCount FROM vwHeatmapData";
-
-$result = $conn->query($sql);     
-$heatmapArray = array();   
-if ($result->num_rows == 0) { 
-    echo "<p>No data</p>";
-} else {
-    while($row = $result->fetch_assoc()) {
-        $thisEpochDate = $row["epochDate"];
-        $thisEventCount = $row["eventCount"];     
-        $heatmapArray[$thisEpochDate] =  $thisEventCount;
-    };
-}
-
-$fp = fopen('i/meetups.json', 'w');
-fwrite($fp, json_encode($heatmapArray, JSON_NUMERIC_CHECK));
-fclose($fp);
-
-
-
 $conn->close();
 ?>
 
