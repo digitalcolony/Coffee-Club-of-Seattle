@@ -9,6 +9,7 @@ VIEW `vwAllStandardVenues` AS
         `VC`.`venueStatus` AS `status`,
         DATE_FORMAT(MIN(`E`.`eventDate`), '%m-%d-%Y') AS `first`,
         DATE_FORMAT(MAX(`E`.`eventDate`), '%m-%d-%Y') AS `last`,
+        E.eventDate,
         COUNT(0) AS `total`
     FROM
         ((`venuesclean` `VC`

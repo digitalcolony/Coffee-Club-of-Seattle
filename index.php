@@ -24,7 +24,9 @@
 			// setup table sort 
 			$(document).ready(function() 
 						{ 
-								$("#myTable").tablesorter(); 
+								$("#myTable").tablesorter({
+									sortList:[[3,1]]
+								}); 
 						} 
 				); 			
 		</script>
@@ -46,7 +48,7 @@
       </thead>
       <tbody>
 <?php
-	$sql = "SELECT venue, venueID, city, status, first, last, total FROM vwAllStandardVenues ORDER BY last DESC, venue";
+	$sql = "SELECT venue, venueID, city, status, first, last, total FROM vwAllStandardVenues ORDER BY eventDate DESC, venue";
 
 	$result = $conn->query($sql);
 
