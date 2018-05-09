@@ -18,6 +18,7 @@
   <head>
     <title>Nightly Meetup Job </title>
     <meta name="robots" content="noindex, nofollow">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
   </head>
   <body>
 <?php

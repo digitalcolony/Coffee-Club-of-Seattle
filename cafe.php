@@ -47,6 +47,7 @@
 		<meta property="og:url" content="<?php echo($configs->PAGE_URL); ?>" />
 		<meta property="og:site_name" content="<?php echo($configs->GROUP_NAME); ?>" />
 		<meta property="fb:app_id" content="<?php echo($configs->FACEBOOK_APP_ID); ?>" />
+		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="i/coffee.css">
 		<meta name="robots" content="noindex, follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
