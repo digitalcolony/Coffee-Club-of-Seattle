@@ -34,7 +34,7 @@ The events and venues table are pulled directly from Meetup and if they had a cl
 ### Venue Report
 
 The Venue Report can be viewed at
-[coffeeclub.app/](https://coffeeclub.app/).
+[coffeeclub.app](https://coffeeclub.app/).
 
 Each column is sortable both ascending and descending. Coffee venues known to be Inactive are not visible by default, but can be added to the report by clicking the Show Inactive button.
 
@@ -50,4 +50,9 @@ The Map uses the latitude and longitude on the venue, which is returned by the M
 
 ### Stats Report
 
-The Stats Report has a few reports events by Day of the Week, Month, and year.
+The Stats Report has a few reports events by Day of the Week, Month, and year. We also have an Activity Map
+broken down by month. Each month square links to a Monthly Report.
+
+### Monthly Report
+
+A monthly detail report accessed via the Activity Heatmap on the Stats Report.
