@@ -45,7 +45,7 @@
             echo " (";
             $catString ="";
             foreach($categories as $category){
-                $catString = $catString.$category->alias." - ";
+                $catString = $catString.$category->title." + ";
             }
             echo substr($catString,0,-3);
             echo ")</li>";
