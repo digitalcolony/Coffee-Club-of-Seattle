@@ -66,7 +66,7 @@
 	<div class="collapse navbar-collapse" id="collapsibleNavbar">
 	 <ul class="navbar-nav">
 	 <li class="nav-item">
-     <a class="nav-link text-info" href="/">Venues</a>
+     <a class="nav-link text-warning" href="/">Venues</a>
     </li>
     <li class="nav-item">
       <a class="nav-link text-info" href="map.php">Map</a>
