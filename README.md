@@ -56,3 +56,7 @@ broken down by month. Each month square links to a Monthly Report.
 ### Monthly Report
 
 A monthly detail report accessed via the Activity Heatmap on the Stats Report.
+
+### Leads Report
+
+This report returns new businesses in the area from YELP that use "coffee" as a defined category. Not every business will be a coffee shop. The code that generates the JSON file comes from my [cafe-informat](https://github.com/digitalcolony/cafe-informant) repo.
