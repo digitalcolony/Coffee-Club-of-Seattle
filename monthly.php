@@ -22,13 +22,13 @@
 
 <html>
   <head>
-    <title>Monthly Report for the Coffee Club of Seattle</title>    
+    <title>Monthly Report for the <?php echo($configs->GROUP_NAME); ?></title>    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<meta property="og:image" content="<?php echo($configs->OG_IMAGE_URL); ?>" />
 		<meta property="og:locale" content="en_US" />
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="<?php echo($configs->GROUP_NAME); ?> Venue List" />
+		<meta property="og:title" content="<?php echo($configs->GROUP_NAME); ?> Monthly Report" />
 		<meta property="og:description" content="<?php echo($configs->GROUP_DESCRIPTION); ?>" />
 		<meta property="og:url" content="<?php echo($configs->PAGE_URL); ?>" />
 		<meta property="og:site_name" content="<?php echo($configs->GROUP_NAME); ?>" />
