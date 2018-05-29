@@ -62,7 +62,7 @@
 <?php
     $json_file = "./i/newcafes.json";
     $json = file_get_contents($json_file);
-    $jsonFileDateString = "This report was last ran on <strong>" . date ("F d, Y", filemtime($json_file))."</strong>.";
+    $jsonFileDateString = "This report last ran on <strong>" . date ("F d, Y", filemtime($json_file))."</strong>.";
     
     $decoded = json_decode($json);
     $cafes = $decoded->businesses;

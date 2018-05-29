@@ -30,7 +30,6 @@
 		echo "Could not find Venue! Return to <a href='.'>summary report</a>";
 		exit();
 	}
-
 ?>
 <!DOCTYPE html>
 
@@ -42,7 +41,7 @@
 		<meta property="og:image" content="<?php echo($configs->OG_IMAGE_URL); ?>" />
 		<meta property="og:locale" content="en_US" />
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="<?php echo($configs->GROUP_NAME); ?> Venue List" />
+		<meta property="og:title" content="<?php echo($configs->GROUP_NAME); ?> Venue Detail" />
 		<meta property="og:description" content="<?php echo($configs->GROUP_DESCRIPTION); ?>" />
 		<meta property="og:url" content="<?php echo($configs->PAGE_URL); ?>" />
 		<meta property="og:site_name" content="<?php echo($configs->GROUP_NAME); ?>" />
