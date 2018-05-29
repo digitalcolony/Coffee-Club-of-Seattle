@@ -42,14 +42,44 @@
         <link rel="stylesheet" href="i/cal-heatmap.css" />
     <script type="text/javascript" src="i/cal-heatmap.js"></script>
     <script type="text/javascript" src="i/jquery-latest.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
   </head>
   <body>
-    <p><a href=".">Venue Report</a> | <a href="map.php">View Map</a></p>
-    <p>Statistical report for the <a href="https://www.meetup.com/<?php echo($configs->GROUP_URLNAME); ?>/">
-        <?php echo($configs->GROUP_NAME); ?></a>.</p>
+  <nav id="topNav" class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+	 	<a class="navbar-brand text-white" href="/"><?php echo($configs->GROUP_NAME); ?></a>
 
-    <h3>Activity Heatmap</h3> 
-    <div id="heatmap-holder" style="padding-left:44px"> 
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+   		 <span class="navbar-toggler-icon"></span>
+  	</button>
+
+	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+	 <ul class="navbar-nav">
+	 <li class="nav-item">
+      <a class="nav-link text-info" href="/">Venues</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-info" href="map.php">Map</a>
+    </li>
+    <li class="nav-item">
+      <span class="text-warning nav-link">Stats</span>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-info" href="leads.php">Leads</a>
+    </li>
+		<li class="nav-item">
+      <a class="nav-link text-info" target="_blank" href="https://www.meetup.com/<?php echo($configs->GROUP_URLNAME); ?>/">Meetup</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-info" target="_blank" href="https://github.com/digitalcolony/Coffee-Club-of-Seattle">GitHub</a>
+    </li>
+  </ul>			
+	</div>
+</nav>
+<div class="container-fluid" style="padding-top:80px">
+
+    <h3>Meetup Heatmap</h3> 
+    <div id="heatmap-holder" style="padding-left:10px"> 
         <div id="cal-heatmap"></div>
     </div>  
             <script type="text/javascript">
@@ -87,7 +117,7 @@
 	                }
                 });
             </script>
-    <h3>Events by Day of the Week</h3>
+    <h3 style="padding-top:20px">Events by Day of the Week</h3>
 
     <table id="myTable" class="tablesorter">
       <thead>
@@ -127,7 +157,7 @@
     </table>
 
 
-    <h3>Events by Month</h3>
+    <h3 style="padding-top:20px">Events by Month</h3>
 
     <table id="myTable" class="tablesorter">
       <thead>
@@ -167,7 +197,7 @@
       </tbody>
     </table>     
 
-    <h3>Events by Year</h3>
+    <h3 style="padding-top:20px">Events by Year</h3>
     <table id="myTable" class="tablesorter">
       <thead>
         <tr>
@@ -203,5 +233,6 @@
       </tbody>
     </table>     
     <p><a href="cronMeetup.php" rel="nofollow" style="color: #ffffff;">Update Now</a></p>
+    </div>
   </body>
 </html>

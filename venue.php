@@ -19,7 +19,7 @@
 		<link rel="stylesheet" type="text/css" href="i/coffee.css">
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	  
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script> 
 		<script type="text/javascript" src="i/jquery.tablesorter.js"></script> 
 		<script type="text/javascript">
 			// setup table sort 
@@ -31,51 +31,20 @@
 						} 
 				); 			
 		</script>
-	  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-  	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
   </head>
   <body>
-	<nav id="topNav" class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-	 	<a class="navbar-brand text-white" href="/"><?php echo($configs->GROUP_NAME); ?></a>
-
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-   		 <span class="navbar-toggler-icon"></span>
-  	</button>
-
-	<div class="collapse navbar-collapse" id="collapsibleNavbar">
-	 <ul class="navbar-nav">
-	 <li class="nav-item">
-      <span class="text-warning nav-link">Venues</span>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-info" href="map.php">Map</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-info" href="stats.php">Stats</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-info" href="leads.php">Leads</a>
-    </li>
-		<li class="nav-item">
-      <a class="nav-link text-info" target="_blank" href="https://www.meetup.com/<?php echo($configs->GROUP_URLNAME); ?>/">Meetup</a>
-    </li>
-		<li class="nav-item">
-      <a class="nav-link text-info" target="_blank" href="https://github.com/digitalcolony/Coffee-Club-of-Seattle">GitHub</a>
-    </li>
-  </ul>			
-	</div>
-</nav>
-<div class="container-fluid" style="padding-top:80px">
-
+	<p>Venue report for the <a href="https://www.meetup.com/<?php echo($configs->GROUP_URLNAME); ?>/">
+		<?php echo($configs->GROUP_NAME); ?></a>. <button>Show Inactive</button>
+	<a href="map.php">View Map</a> | <a href="stats.php">View Stats</a></p>
 		
     <table id="myTable" class="tablesorter">
       <thead>
         <tr>
           <th class="col0">Venue</th>
-          <th class="col1">Location&nbsp;&nbsp;</th>
+          <th class="col1">Location</th>
           <th class="col2">First Visit</th>
           <th class="col3">Last Visit</th>
-          <th class="col4">Total&nbsp;&nbsp;&nbsp;</th>
+          <th class="col4">Total </th>
         </tr>
       </thead>
       <tbody>
@@ -102,18 +71,17 @@
 ?>
       </tbody>
     </table>
-		<button id="btnActive">Display Inactive</button>
 <p><?php echo $result->num_rows; ?> venues (includes Inactive).</p>
 	<script>
 		// toggle visibility of Inactive Venues 
-		$( "#btnActive" ).click(function() {			
+		$( "button" ).click(function() {			
 			$( ".Inactive" ).toggle();
 			$(this).text(function(i, text){
 					return text === "Display Inactive" ? "Hide Inactive" : "Display Inactive";
 			})
 		});
 	</script>
-
-		</div>
+	<p>This code is available to use on <a target="_blank" href="https://github.com/digitalcolony/Coffee-Club-of-Seattle">GitHub</a>.</p>  
+	<p></p>
   </body>
 </html>
