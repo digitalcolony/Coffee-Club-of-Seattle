@@ -2,7 +2,6 @@
     //MySQL Database connection 
     $configs = include("config.php");
     include "connect.php";
-    
     // build JSON file for Activity HeatMap
     $sql = "SELECT epochDate, eventCount FROM vwHeatmapData";
     $result = $conn->query($sql);     
@@ -16,7 +15,6 @@
             $heatmapArray[$thisEpochDate] =  $thisEventCount;
         };
     }
-
     $fp = fopen('i/meetups.json', 'w');
     fwrite($fp, json_encode($heatmapArray, JSON_NUMERIC_CHECK));
     fclose($fp);
@@ -24,99 +22,72 @@
 <!DOCTYPE html>
 <html>
   <head>
-        <title><?php echo($configs->GROUP_NAME); ?> | Stats</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-		<meta property="og:image" content="<?php echo($configs->OG_IMAGE_URL); ?>" />
-		<meta property="og:locale" content="en_US" />
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content="<?php echo($configs->GROUP_NAME); ?> Stats" />
-		<meta property="og:description" content="<?php echo($configs->GROUP_NAME); ?> Meetup Event Stats." />
-		<meta property="og:url" content="<?php echo($configs->PAGE_URL); ?>" />
-		<meta property="og:site_name" content="<?php echo($configs->GROUP_NAME); ?>" />
-		<meta property="fb:app_id" content="<?php echo($configs->FACEBOOK_APP_ID); ?>" />
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-	    <link rel="stylesheet" type="text/css" href="i/coffee.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-    
-        <link rel="stylesheet" href="i/cal-heatmap.css" />
+    <title><?php echo($configs->GROUP_NAME); ?> | Stats</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="<?php echo($configs->OG_IMAGE_URL); ?>" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<?php echo($configs->GROUP_NAME); ?> Stats" />
+    <meta property="og:description" content="<?php echo($configs->GROUP_NAME); ?> Meetup Event Stats." />
+    <meta property="og:url" content="<?php echo($configs->PAGE_URL); ?>" />
+    <meta property="og:site_name" content="<?php echo($configs->GROUP_NAME); ?>" />
+    <meta property="fb:app_id" content="<?php echo($configs->FACEBOOK_APP_ID); ?>" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="i/coffee.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="i/cal-heatmap.css" />
     <script type="text/javascript" src="i/cal-heatmap.js"></script>
     <script type="text/javascript" src="i/jquery-latest.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
   </head>
-  <body>
-  <nav id="topNav" class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-	 	<a class="navbar-brand text-white" href="/"><?php echo($configs->GROUP_NAME); ?></a>
-
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-   		 <span class="navbar-toggler-icon"></span>
-  	</button>
-
-	<div class="collapse navbar-collapse" id="collapsibleNavbar">
-	 <ul class="navbar-nav">
-	 <li class="nav-item">
-      <a class="nav-link text-info" href="/">Venues</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-info" href="map.php">Map</a>
-    </li>
-    <li class="nav-item">
-      <span class="text-warning nav-link">Stats</span>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-info" href="leads.php">Leads</a>
-    </li>
-		<li class="nav-item">
-      <a class="nav-link text-info" target="_blank" href="https://www.meetup.com/<?php echo($configs->GROUP_URLNAME); ?>/">Meetup</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-info" target="_blank" href="https://github.com/digitalcolony/Coffee-Club-of-Seattle">GitHub</a>
-    </li>
-  </ul>			
-	</div>
-</nav>
+<body>
+  <?php
+	// insert nav menu
+	$currentPage = "Stats";
+	include("inc/menu.php");
+?>
 <div class="container-fluid" style="padding-top:80px">
-
     <h3>Meetup Heatmap</h3> 
     <div id="heatmap-holder" style="padding-left:10px"> 
         <div id="cal-heatmap"></div>
     </div>  
-            <script type="text/javascript">
-                var cal = new CalHeatMap();
-                cal.init({
-                    itemSelector: "#cal-heatmap",
-                    data: "i/meetups.json",
-                    start: new Date("2006-07-15"),
-                    considerMissingDataAsZero: true,
-                    range: 13,
-                    domain: "year",
-                    subDomain: "month",
-                    cellSize: 20,
-                    tooltip: true,
-                    verticalOrientation: true,
-                    domainDynamicDimension: true,
-                    previousSelector: "#cal-heatmap-PreviousDomain-selector",
-                    nextSelector: "#cal-heatmap-NextDomain-selector",
-                    label: {
-                        position: "right",
-                        offset: {
-                            x: 0,
-                            y: 15
-                        }
-                    },
-                    legendColors: {
-                        min: "#efefef",
-                        max: "steelblue",
-                        empty: "white"
-                    },
-                    legend: [1, 5, 10, 15],
-                    onClick: function(date, nb) {
-                        var monthPage = "monthly.php?d=" + date.getFullYear() + date.getMonth();
-                        window.location.href = monthPage;
-	                }
-                });
-            </script>
+        <script type="text/javascript">
+            var cal = new CalHeatMap();
+            cal.init({
+                itemSelector: "#cal-heatmap",
+                data: "i/meetups.json",
+                start: new Date("2006-07-15"),
+                considerMissingDataAsZero: true,
+                range: 13,
+                domain: "year",
+                subDomain: "month",
+                cellSize: 20,
+                tooltip: true,
+                verticalOrientation: true,
+                domainDynamicDimension: true,
+                previousSelector: "#cal-heatmap-PreviousDomain-selector",
+                nextSelector: "#cal-heatmap-NextDomain-selector",
+                label: {
+                    position: "right",
+                    offset: {
+                        x: 0,
+                        y: 15
+                    }
+                },
+                legendColors: {
+                    min: "#efefef",
+                    max: "steelblue",
+                    empty: "white"
+                },
+                legend: [1, 5, 10, 15],
+                onClick: function(date, nb) {
+                    var monthPage = "monthly.php?d=" + date.getFullYear() + date.getMonth();
+                    window.location.href = monthPage;
+                }
+            });
+        </script>
     <h3 style="padding-top:20px">Events by Day of the Week</h3>
 
     <table id="myTable" class="tablesorter">
@@ -156,7 +127,6 @@
       </tbody>
     </table>
 
-
     <h3 style="padding-top:20px">Events by Month</h3>
 
     <table id="myTable" class="tablesorter">
@@ -192,7 +162,6 @@
         } else {
             echo "<tr><td>Database Error</td></tr>";
         }
-        
         ?>
       </tbody>
     </table>     
