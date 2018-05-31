@@ -74,5 +74,8 @@
 ?>
     </script>
 </div>
+<?php 
+	include_once("inc/google.php");
+?>
   </body>
 </html>

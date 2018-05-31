@@ -56,5 +56,8 @@
   <p>Yelp returns "new" businesses only after they have at least 1 valid review.</p> 
   <p><?php echo($jsonFileDateString) ?></p>
   </div>
+<?php 
+	include_once("inc/google.php");
+?>
 </body>
 </html>

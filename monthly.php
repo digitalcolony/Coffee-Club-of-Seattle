@@ -80,5 +80,8 @@
     </tbody>
     </table>    
     </div>
+<?php 
+	include_once("inc/google.php");
+?>
   </body>
 </html>

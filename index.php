@@ -85,7 +85,9 @@
 			})
 		});
 	</script>
-
-		</div>
+	</div>
+<?php 
+	include_once("inc/google.php");
+?>
   </body>
 </html>
