@@ -20,7 +20,7 @@
     fclose($fp);
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><?php echo($configs->GROUP_NAME); ?> | Stats</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -37,8 +37,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="i/cal-heatmap.css" />
-    <script type="text/javascript" src="i/cal-heatmap.js"></script>
-    <script type="text/javascript" src="i/jquery-latest.js"></script>
+    <script src="i/cal-heatmap.js"></script>
+    <script src="i/jquery-3.3.1.min.js"></script>	
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
   </head>
@@ -90,9 +90,9 @@
         </script>
     <h3 style="padding-top:20px">Events by Day of the Week</h3>
 
-    <table id="myTable" class="tablesorter">
+    <table id="myTable" class="tablesorter table table-condensed" style="width: auto !important;">
       <thead>
-        <tr>
+        <tr style="background-color:#d3d3d3" class="bg-muted">
           <th class="col0">Day of Week</th>
           <th class="col1">Events</th>
           <th class="col2">Percentage</th>          
@@ -129,9 +129,9 @@
 
     <h3 style="padding-top:20px">Events by Month</h3>
 
-    <table id="myTable" class="tablesorter">
+    <table id="myTable" class="tablesorter table table-condensed" style="width: auto !important;">
       <thead>
-        <tr>
+        <tr style="background-color:#d3d3d3" class="bg-muted">
           <th class="col0">Month</th>
           <th class="col1">Events</th>
           <th class="col2">Percentage</th>          
@@ -167,9 +167,9 @@
     </table>     
 
     <h3 style="padding-top:20px">Events by Year</h3>
-    <table id="myTable" class="tablesorter">
+    <table id="myTable" class="tablesorter table table-condensed" style="width: auto !important;">
       <thead>
-        <tr>
+        <tr style="background-color:#d3d3d3" class="bg-muted">
           <th class="col0">Year</th>
           <th class="col1">Events</th>                   
         </tr>

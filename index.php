@@ -4,7 +4,7 @@
 	include "connect.php";
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><?php echo($configs->GROUP_NAME); ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,10 +16,11 @@
 		<meta property="og:url" content="<?php echo($configs->PAGE_URL); ?>" />
 		<meta property="og:site_name" content="<?php echo($configs->GROUP_NAME); ?>" />
 		<meta property="fb:app_id" content="<?php echo($configs->FACEBOOK_APP_ID); ?>" />
+		<meta name="description" content="<?php echo($configs->GROUP_DESCRIPTION); ?>">
 		<link rel="stylesheet" type="text/css" href="i/coffee.css">
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	  
+		<script src="i/jquery-3.3.1.min.js"></script>	  
 		<script type="text/javascript" src="i/jquery.tablesorter.js"></script> 
 		<script type="text/javascript">
 			// setup table sort 
@@ -41,9 +42,9 @@
 	include("inc/menu.php");
 ?>
 <div class="container-fluid" style="padding-top:80px">
-    <table id="myTable" class="tablesorter">
+    <table id="myTable" class="tablesorter table table-hover">
       <thead>
-        <tr>
+        <tr style="background-color:#d3d3d3" class="bg-muted">
           <th class="col0">Venue</th>
           <th class="col1">Location&nbsp;&nbsp;</th>
           <th class="col2">First Visit</th>
