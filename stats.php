@@ -46,7 +46,7 @@
   <?php
 	// insert nav menu
 	$currentPage = "Stats";
-	include("inc/menu.php");
+	include("i/php/menu.php");
 ?>
 <div class="container-fluid" style="padding-top:80px">
     <h3>Meetup Heatmap</h3> 
@@ -204,7 +204,7 @@
     <p><a href="cronMeetup.php" rel="nofollow" style="color: #ffffff;">Update Now</a></p>
     </div>
 <?php 
-    include_once("inc/google.php");
+    include_once("i/php/google.php");
 ?>
   </body>
 </html>

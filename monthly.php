@@ -43,7 +43,7 @@
 <?php
 	// insert nav menu
 	$currentPage = "Monthly";
-	include("inc/menu.php");
+	include("i/php/menu.php");
 ?>
 <div class="container-fluid" style="padding-top:80px">
   <h3>Meetups for <?php echo $monthName." ".$year ?> </h3>
@@ -81,7 +81,7 @@
     </tabl>    
     </div>
 <?php 
-	include_once("inc/google.php");
+	include_once("i/php/google.php");
 ?>
   </body>
 </html>

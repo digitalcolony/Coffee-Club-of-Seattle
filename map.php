@@ -28,7 +28,7 @@
 <?php
 	// insert nav menu
 	$currentPage = "Map";
-	include("inc/menu.php");
+	include("i/php/menu.php");
 ?>
 <div class="container-fluid" style="padding-top:80px">
 
@@ -75,7 +75,7 @@
     </script>
 </div>
 <?php 
-	include_once("inc/google.php");
+	include_once("i/php/google.php");
 ?>
   </body>
 </html>

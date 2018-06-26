@@ -39,7 +39,7 @@
 <?php
 	// insert nav menu
 	$currentPage = "Venues";
-	include("inc/menu.php");
+	include("i/php/menu.php");
 ?>
 <div class="container-fluid" style="padding-top:80px">
     <table id="myTable" class="tablesorter table table-hover">
@@ -88,7 +88,7 @@
 	</script>
 	</div>
 <?php 
-	include_once("inc/google.php");
+	include_once("i/php/google.php");
 ?>
   </body>
 </html>

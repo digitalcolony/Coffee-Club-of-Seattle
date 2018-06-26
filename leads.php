@@ -26,7 +26,7 @@
 <?php
 	// insert nav menu
 	$currentPage = "Leads";
-	include("inc/menu.php");
+	include("i/php/menu.php");
 ?>
 <div class="container-fluid" style="padding-top:80px">
     <p>These new businesses have labeled themselves with YELP as "Coffee" in one of their 
@@ -57,7 +57,7 @@
   <p><?php echo($jsonFileDateString) ?></p>
   </div>
 <?php 
-	include_once("inc/google.php");
+	include_once("i/php/google.php");
 ?>
 </body>
 </html>

@@ -56,7 +56,7 @@
 <?php
 	// insert nav menu
 	$currentPage = "Cafe";
-	include("inc/menu.php");
+	include("i/php/menu.php");
 ?>
 <div class="container-fluid" style="padding-top:80px">
   <h3><?php echo $thisVenue ?></h3>
@@ -97,7 +97,7 @@
     </table>    
 		</div>
 <?php 
-	include_once("inc/google.php");
+	include_once("i/php/google.php");
 ?>
   </body>
 </html>
