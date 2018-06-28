@@ -2,6 +2,7 @@
 	//MySQL Database connection 
 	$configs = include("config.php");
 	include "connect.php";
+	header("Cache-Control: max-age=14400"); //4 hours (60sec * 60min * 4)
 
 	// Get VenueID from QueryString, then test for Integer
 	$venueID = $_GET['id'];

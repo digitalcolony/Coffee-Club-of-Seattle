@@ -1,6 +1,7 @@
 <?php 
     $configs = include("config.php");
     date_default_timezone_set('America/Los_Angeles');
+    header("Cache-Control: max-age=14400"); //4 hours (60sec * 60min * 4)
 ?>
 <!DOCTYPE html>
 <html lang="en">

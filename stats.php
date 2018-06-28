@@ -2,6 +2,7 @@
     //MySQL Database connection 
     $configs = include("config.php");
     include "connect.php";
+    header("Cache-Control: max-age=14400"); //4 hours (60sec * 60min * 4)
     // build JSON file for Activity HeatMap
     $sql = "SELECT epochDate, eventCount FROM vwHeatmapData";
     $result = $conn->query($sql);     
