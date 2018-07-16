@@ -1,6 +1,6 @@
 <?php 
-    $configs = include("config.php");
-    date_default_timezone_set('America/Los_Angeles');
+    $configs = include("./src/php/config.php");
+    date_default_timezone_set($configs->CRON_TIMEZONE);
     header("Cache-Control: max-age=14400"); //4 hours (60sec * 60min * 4)
 ?>
 <!DOCTYPE html>
@@ -17,24 +17,24 @@
 		<meta property="og:site_name" content="<?php echo($configs->GROUP_NAME); ?>" />
 		<meta property="fb:app_id" content="<?php echo($configs->FACEBOOK_APP_ID); ?>" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="i/coffee.css">
+	<link rel="stylesheet" type="text/css" href="/src/css/coffee.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="i/jquery-3.3.1.min.js"></script>	
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-  </head>
+    <script src="/src/js/jquery-3.3.1.min.js"></script>	
+    <link href="/src/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/src/js/bootstrap.min.js"></script>	    
+</head>
 <body>
 <?php
 	// insert nav menu
 	$currentPage = "Leads";
-	include("i/php/menu.php");
+	include("./src/php/menu.php");
 ?>
 <div class="container-fluid" style="padding-top:80px">
     <p>These new businesses have labeled themselves with YELP as "Coffee" in one of their 
     categories. They are leads and not necessarily coffee shops.</p>
 <ol>
 <?php
-    $json_file = "./i/newcafes.json";
+    $json_file = "./src/data/newcafes.json";
     $json = file_get_contents($json_file);
     $jsonFileDateString = "This report last ran on <strong>" . date ("F d, Y", filemtime($json_file))."</strong>.";
     $decoded = json_decode($json);
@@ -58,7 +58,7 @@
   <p><?php echo($jsonFileDateString) ?></p>
   </div>
 <?php 
-	include_once("i/php/google.php");
+	include_once("./src/php/google.php");
 ?>
 </body>
 </html>

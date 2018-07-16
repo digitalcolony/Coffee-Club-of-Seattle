@@ -1,7 +1,7 @@
 <?php 
     //MySQL Database connection 
-    $configs = include("config.php");
-    include "connect.php";
+    $configs = include("./src/php/config.php");
+    include "./src/php/connect.php";
     header("Cache-Control: max-age=14400"); //4 hours (60sec * 60min * 4)
     // build JSON file for Activity HeatMap
     $sql = "SELECT epochDate, eventCount FROM vwHeatmapData";
@@ -16,7 +16,7 @@
             $heatmapArray[$thisEpochDate] =  $thisEventCount;
         };
     }
-    $fp = fopen('i/meetups.json', 'w');
+    $fp = fopen('./src/data/meetups.json', 'w');
     fwrite($fp, json_encode($heatmapArray, JSON_NUMERIC_CHECK));
     fclose($fp);
 ?>
@@ -34,20 +34,22 @@
     <meta property="og:site_name" content="<?php echo($configs->GROUP_NAME); ?>" />
     <meta property="fb:app_id" content="<?php echo($configs->FACEBOOK_APP_ID); ?>" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="i/coffee.css">
+    <link rel="stylesheet" type="text/css" href="/src/css/coffee.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="i/cal-heatmap.css" />
-    <script src="i/cal-heatmap.js"></script>
-    <script src="i/jquery-3.3.1.min.js"></script>	
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-  	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-  </head>
+    <link rel="stylesheet" href="/src/css/cal-heatmap.css" />
+    <!-- Use v 3.5.6 of d3. The 5.5 version breaks heatmap. -->
+    <script src="/src/js/d3.3.5.6.min.js"></script> 
+     <script src="/src/js/jquery-3.3.1.min.js"></script>	
+    <link href="/src/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/src/js/bootstrap.min.js"></script>  
+    <script src="/src/js/cal-heatmap.js"></script> 
+    
+</head>
 <body>
   <?php
 	// insert nav menu
 	$currentPage = "Stats";
-	include("i/php/menu.php");
+	include("./src/php/menu.php");
 ?>
 <div class="container-fluid" style="padding-top:80px">
     <h3>Meetup Heatmap</h3> 
@@ -58,7 +60,7 @@
             var cal = new CalHeatMap();
             cal.init({
                 itemSelector: "#cal-heatmap",
-                data: "i/meetups.json",
+                data: "/src/data/meetups.json",
                 start: new Date("2006-07-15"),
                 considerMissingDataAsZero: true,
                 range: 13,
@@ -202,10 +204,9 @@
         ?>
       </tbody>
     </table>     
-    <p><a href="cronMeetup.php" rel="nofollow" style="color: #ffffff;">Update Now</a></p>
     </div>
 <?php 
-    include_once("i/php/google.php");
+    include_once("./src/php/google.php");
 ?>
   </body>
 </html>
