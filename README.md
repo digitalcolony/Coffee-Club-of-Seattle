@@ -53,6 +53,8 @@ The Map uses the latitude and longitude on the venue, which is returned by the M
 The Stats Report has a few reports events by Day of the Week, Month, and year. We also have an Activity Map
 broken down by month. Each month square links to a Monthly Report.
 
+The activity map uses D3.js. It needs version 3.5.6, as version 5.5 breaks it.
+
 ### Monthly Report
 
 A monthly detail report accessed via the Activity Heatmap on the Stats Report.
