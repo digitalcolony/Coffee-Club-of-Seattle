@@ -2,7 +2,7 @@
 
 Documentation and code for the Meetup group Coffee Club of Seattle.
 
-![Coffee Club of Seattle](coffee-club-logo.jpeg "Coffee Club of Seattle")
+![Coffee Club of Seattle](src/img/coffee-club-logo.jpeg "Coffee Club of Seattle")
 
 ## GitBook
 
