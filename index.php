@@ -22,7 +22,7 @@
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="/src/js/jquery-3.3.1.min.js"></script>	  
-		<script type="text/javascript" src="/src/js/jquery.tablesorter.js"></script> 
+		<script type="text/javascript" src="/src/js/jquery.tablesorter.min.js"></script> 
 		<script type="text/javascript">
 			// setup table sort 
 			$(document).ready(function() 
@@ -88,7 +88,7 @@
 		});
 	</script>
 	</div>
-	<!-- <script src="/src/js/app.js"></script> -->
+	 <script src="/src/js/app.js"></script> 
 <?php 
 	include_once("./src/php/google.php");
 ?>

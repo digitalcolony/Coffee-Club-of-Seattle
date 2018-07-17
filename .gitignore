@@ -1,6 +1,5 @@
-config.php
+src/php/config.php
 sandbox/
-i/eventsAll.js
 BingSiteAuth.xml
 google333c53122dd79fe4.html
 node_modules/
