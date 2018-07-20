@@ -88,7 +88,7 @@
 		});
 	</script>
 	</div>
-	 <script src="/src/js/app.js"></script> 
+	 <!-- <script src="/src/js/app.js"></script>  -->
 <?php 
 	include_once("./src/php/google.php");
 ?>

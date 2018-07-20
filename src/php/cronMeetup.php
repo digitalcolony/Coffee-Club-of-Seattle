@@ -59,7 +59,7 @@ for ($j=$offset; $j<=$offset+1 ;$j++)
                 $TimeZoneNameTo=$configs->CRON_TIMEZONE;
                 $thisEventDate =  date_create($thisGMT, new DateTimeZone($TimeZoneNameFrom))
                      ->setTimezone(new DateTimeZone($TimeZoneNameTo))->format("Y-m-d H:i:s");
-                $thisEventName = mysql_escape_string($event->name);
+                $thisEventName = mysqli_real_escape_string($event->name);
 
                 echo "<p>Adding: ".$thisEventName."</p>";
 
@@ -93,8 +93,8 @@ for ($j=$offset; $j<=$offset+1 ;$j++)
 
                     $thisLat = $event->venue->lat;
                     $thisLon = $event->venue->lon;
-                    $thisCity = mysql_escape_string($event->venue->city);
-                    $thisVenueName = mysql_escape_string($event->venue->name);
+                    $thisCity = mysqli_real_escape_string($event->venue->city);
+                    $thisVenueName = mysqli_real_escape_string($event->venue->name);
 
                     if (isset($event->venue->zip)) { 
                         $thisZip = $event->venue->zip;    

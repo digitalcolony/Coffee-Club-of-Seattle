@@ -1,5 +1,6 @@
-const CACHE_STATIC_NAME = "static-v2";
-const CACHE_DYNAMIC_NAME = "dynamic-v1";
+const CACHE_STATIC_NAME = "static-v3";
+const CACHE_DYNAMIC_NAME = "dynamic-v2";
+const OFFLINE_URL = "offline.html";
 
 self.addEventListener("install", function(event) {
   console.log("[Service Worker] Installing Service Worker ...", event);
@@ -7,8 +8,6 @@ self.addEventListener("install", function(event) {
     caches.open(CACHE_STATIC_NAME).then(function(cache) {
       console.log("[Service Worker] Precaching App Shell");
       cache.addAll([
-        "/",
-        "/index.php",
         "/src/css/coffee.css",
         "/src/js/jquery-3.3.1.min.js",
         "/src/js/jquery.tablesorter.min.js",
@@ -18,10 +17,8 @@ self.addEventListener("install", function(event) {
         "/src/js/cal-heatmap.js",
         "/src/css/cal-heatmap.css",
         "/src/js/d3.3.5.6.min.js",
-        "/stats.php",
-        "/map.php",
-        "/leads.php",
-        "/src/js/app.js"
+        "/src/js/app.js",
+        "/offline.html"
       ]);
     })
   );
@@ -59,7 +56,7 @@ self.addEventListener("fetch", function(event) {
             });
           })
           .catch(function(err) {
-            //
+            return caches.match("/offline.html");
           });
       }
     })
