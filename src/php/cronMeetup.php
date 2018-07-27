@@ -81,7 +81,7 @@ for ($j=$offset; $j<=$offset+1 ;$j++)
                 $sql2 = "SELECT venueIDmapped FROM venuesmapped WHERE venueID = ".$thisVenueID;
                 $result = $conn->query($sql2);
 	            if ($result->num_rows > 0) {
-                    // An exisiting venue was found. Take the venueIDmapped as the venueID going forward. 
+                    // An existing venue was found. Take the venueIDmapped as the venueID going forward. 
                     $row = $result->fetch_assoc();
                     $thisVenueID = $row["venueIDmapped"];
                     //echo "<p>Venue Found!</p>";
