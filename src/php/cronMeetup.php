@@ -4,7 +4,7 @@
     // The Event will be added to our Database for reporting. 
     // If the Venue is new, that will be added as well. 
     // Some Venues have duplicate entries on Meetup. We use a venuesmapping table to avoid duplicate entries. 
-    // Whenever a new Venue is entered, an email to confirm it is truely new. 
+    // Whenever a new Venue is entered, an email to confirm it is truly new. 
     // If a new venue isn't really new but a duplicate, the data will be handled by hand (for now). 
 
     //MySQL Database connection 
@@ -59,7 +59,7 @@ for ($j=$offset; $j<=$offset+1 ;$j++)
                 $TimeZoneNameTo=$configs->CRON_TIMEZONE;
                 $thisEventDate =  date_create($thisGMT, new DateTimeZone($TimeZoneNameFrom))
                      ->setTimezone(new DateTimeZone($TimeZoneNameTo))->format("Y-m-d H:i:s");
-                $thisEventName = mysqli_real_escape_string($event->name);
+                $thisEventName = mysqli_real_escape_string($conn, $event->name);
 
                 echo "<p>Adding: ".$thisEventName."</p>";
 
@@ -93,8 +93,8 @@ for ($j=$offset; $j<=$offset+1 ;$j++)
 
                     $thisLat = $event->venue->lat;
                     $thisLon = $event->venue->lon;
-                    $thisCity = mysqli_real_escape_string($event->venue->city);
-                    $thisVenueName = mysqli_real_escape_string($event->venue->name);
+                    $thisCity = mysqli_real_escape_string($conn, $event->venue->city);
+                    $thisVenueName = mysqli_real_escape_string($conn, $event->venue->name);
 
                     if (isset($event->venue->zip)) { 
                         $thisZip = $event->venue->zip;    
@@ -136,7 +136,7 @@ for ($j=$offset; $j<=$offset+1 ;$j++)
                     $conn->query($sql5);
                     
                     // I only want to receive an alert when a new venue is added.
-                    $mailMessage = $thisVenueName." added as a new venue: ".$thisVenueID;
+                    $mailMessage = $thisVenueName." [". $event->venue->name ."] added as a new venue: ".$thisVenueID;
                     mail($configs->CRON_EMAIL,"Meetup Venue Alert",$mailMessage);
                 }
                 
