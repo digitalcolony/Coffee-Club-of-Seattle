@@ -49,7 +49,7 @@
   <?php
 	// insert nav menu
 	$currentPage = "Stats";
-	include("./src/php/menu.php");
+  include("./src/php/menu.php");
 ?>
 <div class="container-fluid" style="padding-top:80px">
     <h3>Meetup Heatmap</h3> 
@@ -58,12 +58,16 @@
     </div>  
         <script type="text/javascript">
             var cal = new CalHeatMap();
+            // Define the rows of the Heatmap (range) as Current Year - 2006 (+1)
+            var d = new Date();
+            var n = d.getFullYear();
+            var range = n - 2006 + 1;
             cal.init({
                 itemSelector: "#cal-heatmap",
                 data: "/src/data/meetups.json",
                 start: new Date("2006-07-15"),
                 considerMissingDataAsZero: true,
-                range: 13,
+                range: range,
                 domain: "year",
                 subDomain: "month",
                 cellSize: 20,
