@@ -42,7 +42,11 @@
 	$currentPage = "Venues";
 	include("./src/php/menu.php");
 ?>
+  
 <div class="container-fluid" style="padding-top:80px">
+<p>AUG 2019: Our data is not updating at this time. Meetup changed the rules on how we access the API. We
+  are working on a resolution.</p>
+  
     <table id="myTable" class="tablesorter table table-hover">
       <thead>
         <tr style="background-color:#d3d3d3" class="bg-muted">
