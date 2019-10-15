@@ -50,9 +50,9 @@
       });
 
     <?php 
-        $sql = "SELECT venue, venueID, lat, lon, first, last, total 
-            FROM vwAllStandardVenues
-            WHERE status = 'Active'";
+        $sql = "SELECT venueName, cc_venueID, lat, lon, eventFirst, eventLast, eventTotal 
+            FROM vwCC_StandardVenues
+            WHERE venueStatus = 'Active'";
 
         $result = $conn->query($sql);
 
@@ -61,12 +61,12 @@
                 echo "var m = mapObj.addMarker({";
                 echo "  lat: ".$row['lat'].",";
                 echo "  lng: ".$row['lon'].",";
-                echo "  label: '".$row['total']."',";
-                echo " title: '".addslashes($row['venue'])."', ";
+                echo "  label: '".$row['eventTotal']."',";
+                echo " title: '".addslashes($row['venueName'])."', ";
                 echo " infoWindow: { ";
-                echo " content: '<h4>".addslashes($row['venue'])."</h4> "; 
-                echo " <div><a href=\"cafe.php?id=".$row['venueID']."\">Last: ".$row['last']."</a></div>', ";
-                echo " maxWidth: 100 } ";
+                echo " content: '<h4>".addslashes($row['venueName'])."</h4> "; 
+                echo " <div><a href=\"cafe.php?id=".$row['cc_venueID']."\">Last: ".$row['eventLast']."</a></div>', ";
+                echo " maxWidth: 180 } ";
                 echo "});";               
             } 
         }
