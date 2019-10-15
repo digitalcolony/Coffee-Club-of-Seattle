@@ -40,6 +40,7 @@
     
     <!-- GMaps Library -->
     <script src="/src/js/gmaps.js"></script>
+    
     <script>
       /* Map Object */
       var mapObj = new GMaps({
