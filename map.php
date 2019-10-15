@@ -36,7 +36,7 @@
     so multi-location Meetups are not included in the dataset.</p> 
     <div id="map"></div>
     <!-- Google Maps JS API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs8dGa-nxjxPn_wE2VfkxeagY-TO8rQSU"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo($configs->GOOGLE_MAP_KEY); ?>"></script>
     
     <!-- GMaps Library -->
     <script src="/src/js/gmaps.js"></script>
