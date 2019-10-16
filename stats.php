@@ -4,7 +4,7 @@
     include "./src/php/connect.php";
     header("Cache-Control: max-age=14400"); //4 hours (60sec * 60min * 4)
     // build JSON file for Activity HeatMap
-    $sql = "SELECT epochDate, eventCount FROM vwHeatmapData";
+    $sql = "SELECT epochDate, eventCount FROM vwCC_HeatmapData";
     $result = $conn->query($sql);     
     $heatmapArray = array();   
     if ($result->num_rows == 0) { 
@@ -111,8 +111,8 @@
             COUNT(*) AS EventsThatDay, 
             ROUND((COUNT(*)/ SUM_Table.TotalEvents)* 100,1) AS EventsThatDayPercent,
             SUM_Table.TotalEvents
-        FROM eventsclean AS EVC
-        INNER JOIN (SELECT COUNT(*) as TotalEvents FROM eventsclean ) AS SUM_Table
+        FROM cc_events AS EVC
+        INNER JOIN (SELECT COUNT(*) as TotalEvents FROM cc_events) AS SUM_Table
         GROUP BY DAYOFWEEK(eventDate), DAYNAME(eventDate)
         ORDER BY DayNumber";
         $result = $conn->query($sql);
@@ -150,8 +150,8 @@
                 COUNT(*) AS EventsThatMonth, 
                 ROUND((COUNT(*)/ SUM_Table.TotalEvents)* 100,1) AS EventsThatMonthPercent,
                 SUM_Table.TotalEvents
-            FROM eventsclean AS EVC
-            INNER JOIN (SELECT COUNT(*) as TotalEvents FROM eventsclean ) AS SUM_Table
+            FROM cc_events AS EVC
+            INNER JOIN (SELECT COUNT(*) as TotalEvents FROM cc_events ) AS SUM_Table
             GROUP BY MONTH(eventDate), MONTHNAME(eventDate)
             ORDER BY MonthNumber";
         
@@ -185,7 +185,7 @@
       <?php
         $sql = "SELECT YEAR(eventDate) as YearNumber,  
                 COUNT(*) AS EventsThatYear
-            FROM eventsclean AS EVC
+            FROM cc_events AS EVC
             GROUP BY YEAR(eventDate)
             ORDER BY YearNumber";
         $result = $conn->query($sql);
