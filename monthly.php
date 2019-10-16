@@ -58,7 +58,7 @@
       </thead>
       <tbody>
 <?php
-    $query = "CALL spGetEventsByMonth ('".$fullDate."')";
+    $query = "CALL spGetCCEventsByMonth ('".$fullDate."')";
     //run the store proc
 
     $result = mysqli_query($conn, $query) or die("Query fail: " . mysqli_error());
@@ -68,7 +68,7 @@
         while($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td>". ++$j . "</td>";
-            echo "<td><a href='cafe.php?id=".$row["venueID"]."'>". $row["venueName"] ."</a></td>";
+            echo "<td><a href='cafe.php?id=".$row["cc_venueID"]."'>". $row["venueName"] ."</a></td>";
             echo "<td class='col1'><a href='".$row["eventLink"]."' target='_blank'>". $row["eventDateFormat"]. "</a></td>";
             echo "</tr>";
         }
