@@ -59,18 +59,18 @@
       </thead>
       <tbody>
 <?php
-	$sql = "SELECT venue, venueID, city, status, first, last, total FROM vwAllStandardVenues ORDER BY eventDate DESC, venue";
+	$sql = "SELECT venueName, cc_venueID, city, venueStatus, eventFirst, eventLast, eventTotal FROM vwCC_StandardVenues ORDER BY eventLast DESC, venueName";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
-			echo "<tr class='". $row["status"]. "'>";
-			echo "<td class='col0'><a href='cafe.php?id=".$row["venueID"]."'>". $row["venue"]. "</a></td>";
+			echo "<tr class='". $row["venueStatus"]. "'>";
+			echo "<td class='col0'><a href='cafe.php?id=".$row["cc_venueID"]."'>". $row["venueName"]. "</a></td>";
 			echo "<td class='col1'>". $row["city"]. "</td>";
-			echo "<td class='col2'>". $row["first"]. "</td>";
-			echo "<td class='col3'>". $row["last"]. "</td>";
-			echo "<td class='col4'>". $row["total"]. "</td>";
+			echo "<td class='col2'>". $row["eventFirst"]. "</td>";
+			echo "<td class='col3'>". $row["eventLast"]. "</td>";
+			echo "<td class='col4'>". $row["eventTotal"]. "</td>";
 			echo "</tr>";		
 		}
 	} else {

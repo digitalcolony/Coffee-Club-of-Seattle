@@ -9,7 +9,7 @@
 	if(is_numeric($venueID)) 
 	{
 		$sql = "SELECT venueName, address_1, address_2, city, state, country, lat, lon, venueType, venueStatus  
-				FROM venuesclean WHERE venueID = ". $venueID;	
+				FROM cc_venues WHERE venueType='Standard' AND cc_venueID = ". $venueID;	
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {
 			$row = $result->fetch_assoc();
@@ -75,7 +75,7 @@
       <tbody>
  		<?php 
 	 		$sql = "SELECT eventLink, eventName, DATE_FORMAT(eventDate,'%m-%d-%Y') AS eventDateFormat
-			 				FROM vwAllEvents WHERE venueID = ". $venueID. " ORDER BY eventDate DESC";
+			 				FROM vwCC_AllEvents WHERE cc_venueID = ". $venueID. " ORDER BY eventDate DESC";
  			$result = $conn->query($sql);
  			$j = 0;
  			
