@@ -10,7 +10,7 @@
         'API_KEY' => '', // https://secure.meetup.com/meetup_api/key/
         'GROUP_URLNAME' => '', // EX: seattle-coffee-club
         'GROUP_NAME' => '', // EX: Coffee Club of Seattle 
-        'GROUP_DESCRIPTION' => '', // EX: Exploring the Seattle Coffee scene snce 2006. 
+        'GROUP_DESCRIPTION' => '', // EX: Exploring the Seattle Coffee scene since 2006. 
 
         // Website Settings 
         'PAGE_URL' => '', // The URL where you will host this code. 
@@ -24,6 +24,9 @@
         'CHRON_TIMEZONE' => 'America/Los_Angeles',
         'CHRON_DEFAULT_STATE' => 'WA',
         'CHRON_DEFAULT_COUNTRY' => 'US'
+
+        // Google Map API
+        'GOOGLE_MAP_KEY' => ''
     );
 ?>
 
