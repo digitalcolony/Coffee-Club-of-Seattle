@@ -1,0 +1,30 @@
+{
+  "@context": "http://schema.org",
+  "@type": "Event",
+  "name": "☕👻 Sunday Espresso Hike: Milstead + Vif + Market (FREMONT)",
+  "url": "https://www.meetup.com/seattle-coffee-club/events/265378513/",
+  "description": "If you haven't explored Fremont, you'll want to join this espresso hike. The Coffee Club has done this espresso hike every year since 2010.\n\nWe will visit all the Fremont fixtures, such as Lenin, the Rocket, and The Troll. We will meet at Milstead. Then we will make our way north to Vif and finish at the Fremont Market.\n\nThis espresso hike is about 3 miles long with one hill.\n\n1- Milstead & Co 754 North 34th Street\n\nhttp://www.milsteadandco.com/\n\n2 - Vif Seattle 4401 Fremont Ave North\n\nhttps://v",
+  "startDate": "2019-10-06T11:00-07:00",
+  "endDate": "2019-10-06T13:00-07:00",
+  "location": {
+    "@type": "Place",
+    "name": "Milstead & Co.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "754 North 34th Street",
+      "addressLocality": "Seattle",
+      "addressCountry": "USA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 47.649436950683594,
+      "longitude": -122.3477783203125
+    }
+  },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Coffee Club of Seattle",
+    "url": "https://www.meetup.com/seattle-coffee-club/"
+  }
+}

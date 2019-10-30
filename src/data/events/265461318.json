@@ -1,0 +1,15 @@
+{
+  "@context": "http://schema.org",
+  "@type": "Event",
+  "name": "☕🍺 Wednesday Coffee - MiiR (FREMONT, WALLINGFORD)",
+  "url": "https://www.meetup.com/seattle-coffee-club/events/265461318/",
+  "description": "MiiR has 2 different espresso options and probably 30 or so beers and ciders. 😵\n\nROASTER: Counter Culture\n\nWEB: https://www.miir.com/pages/flagship\n\nBest buses are the 31, 32 and 62, but the 5, 26 and 28 can also work.",
+  "startDate": "2019-10-09T14:00-07:00",
+  "endDate": "2019-10-09T16:00-07:00",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Coffee Club of Seattle",
+    "url": "https://www.meetup.com/seattle-coffee-club/"
+  }
+}
