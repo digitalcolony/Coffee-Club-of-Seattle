@@ -1,4 +1,9 @@
 <?php
+    // 2019: Meetup disabled access to the API, so adding an exit() call.
+    // If they decide to open it up again, we can remove this line. 
+
+    exit();
+    
     // This page will be executed by a cron job once a day. 
     // It will check Meetup for newly completed Meetup Events.
     // The Event will be added to our Database for reporting. 
