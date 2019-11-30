@@ -4,7 +4,6 @@
     $configs = include_once($configFile);
     include_once($rootFolder . "/src/php/connect.php");
  
-	header("Cache-Control: max-age=14400"); //4 hours (60sec * 60min * 4)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="/src/js/jquery-3.3.1.min.js"></script>	 
     <link href="/src/css/bootstrap.min.css" rel="stylesheet">
-  	<script src="/src/js/bootstrap.min.js"></script>
+    <script src="/src/js/bootstrap.min.js"></script>
+    <link href="/src/css/admin.css" rel="stylesheet">
     <title>Coffee Club Admin</title>
 </head>
 <body>
@@ -26,6 +26,7 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
 	    <ul class="navbar-nav">
         <li class='nav-item'><span class='text-warning nav-link'>Queue</span></li>
+        <li class='nav-item'><a class='text-info nav-link'' href='/zdmin/venues.php'>Venues</a></li>
         </ul>
     </div>
 </nav>

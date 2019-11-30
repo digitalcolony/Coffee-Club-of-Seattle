@@ -3,8 +3,6 @@
     $configFile = $rootFolder . "/src/php/config.php";
     $configs = include_once($configFile);
     include_once($rootFolder . "/src/php/connect.php");
- 
-    header("Cache-Control: max-age=14400"); //4 hours (60sec * 60min * 4)
     
     if(isset($_POST['submit']))
     {
@@ -63,10 +61,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="/src/js/jquery-3.3.1.min.js"></script>	 
     <link href="/src/css/bootstrap.min.css" rel="stylesheet">
-  	<script src="/src/js/bootstrap.min.js"></script>
-    <title>Coffee Club Admin</title>
-
-
+      <script src="/src/js/bootstrap.min.js"></script>
+      <link href="/src/css/admin.css" rel="stylesheet">
+    <title>Coffee Club Admin - Process Events</title>
 </head>
 <body>
 <nav id="topNav" class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
@@ -78,11 +75,12 @@
 	    <ul class="navbar-nav">
         <li class='nav-item'><a class='nav-link text-info' href='/zdmin/'>Queue</a></li>
         <li class='nav-item'><span class='text-warning nav-link'>Process</span></li>
+        <li class='nav-item'><a class='text-info nav-link' href='/zdmin/venues.php'>Venues</a></li>
         </ul>
     </div>
 </nav>
 
-<div class="container-fluid" style="padding-top:80px">
+<div class="container-fluid pageSection">
   <h3>Process </h3>
  
 
@@ -166,7 +164,6 @@
        $query = "CALL spGetCCVenues (".$lat .",". $lon .")";
        //run the store proc
        $result = mysqli_query($conn, $query) or die("Query fail: " . mysqli_error());
-       $j = 0;
        if ($result->num_rows > 0) {
            // output data of each row
            while($row = $result->fetch_assoc()) {
