@@ -86,7 +86,7 @@
     <script src="/src/js/jquery-3.3.1.min.js"></script>	 
     <link href="/src/css/bootstrap.min.css" rel="stylesheet">
       <script src="/src/js/bootstrap.min.js"></script>
-      <link href="/src/css/admin.css" rel="stylesheet">
+      <link href="/src/css/admin.css?v=2" rel="stylesheet">
     <title>Coffee Club Admin - Venue Edit</title>
 </head>
 <body>
