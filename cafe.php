@@ -9,7 +9,7 @@
 	if(is_numeric($venueID)) 
 	{
 		$sql = "SELECT venueName, address_1, address_2, city, state, country, lat, lon, venueType, venueStatus  
-				FROM venuesclean WHERE venueID = ". $venueID;	
+				FROM cc_venues WHERE venueType='Standard' AND cc_venueID = ". $venueID;	
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {
 			$row = $result->fetch_assoc();
@@ -46,7 +46,7 @@
 		<meta property="og:site_name" content="<?php echo($configs->GROUP_NAME); ?>" />
 		<meta property="fb:app_id" content="<?php echo($configs->FACEBOOK_APP_ID); ?>" />
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="/src/css/coffee.css">
+		<link rel="stylesheet" type="text/css" href="/src/css/coffee.css?v=<?php echo($configs->CSS_VERSION); ?>">
 		<meta name="robots" content="noindex, follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="/src/js/jquery-3.3.1.min.js"></script>	
@@ -75,7 +75,7 @@
       <tbody>
  		<?php 
 	 		$sql = "SELECT eventLink, eventName, DATE_FORMAT(eventDate,'%m-%d-%Y') AS eventDateFormat
-			 				FROM vwAllEvents WHERE venueID = ". $venueID. " ORDER BY eventDate DESC";
+			 				FROM vwCC_AllEvents WHERE cc_venueID = ". $venueID. " ORDER BY eventDate DESC";
  			$result = $conn->query($sql);
  			$j = 0;
  			

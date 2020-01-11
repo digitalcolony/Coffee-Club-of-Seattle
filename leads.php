@@ -17,7 +17,7 @@
 		<meta property="og:site_name" content="<?php echo($configs->GROUP_NAME); ?>" />
 		<meta property="fb:app_id" content="<?php echo($configs->FACEBOOK_APP_ID); ?>" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="/src/css/coffee.css">
+    <link rel="stylesheet" type="text/css" href="/src/css/coffee.css?v=<?php echo($configs->CSS_VERSION); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/src/js/jquery-3.3.1.min.js"></script>	
     <link href="/src/css/bootstrap.min.css" rel="stylesheet">

@@ -10,7 +10,7 @@
         'API_KEY' => '', // https://secure.meetup.com/meetup_api/key/
         'GROUP_URLNAME' => '', // EX: seattle-coffee-club
         'GROUP_NAME' => '', // EX: Coffee Club of Seattle 
-        'GROUP_DESCRIPTION' => '', // EX: Exploring the Seattle Coffee scene snce 2006. 
+        'GROUP_DESCRIPTION' => '', // EX: Exploring the Seattle Coffee scene since 2006. 
 
         // Website Settings 
         'PAGE_URL' => '', // The URL where you will host this code. 
@@ -18,12 +18,16 @@
         'FACEBOOK_APP_ID' => '', // Get from Facebook (optional)
         'MAP_START_LAT' => '47.6092', // Replace with your location center
         'MAP_START_LON' => '-122.3177, // Replace with your location center
+        'CSS_VERSION' => '2', // increment when making CSS changes
 
         // Chron Job Settings 
         'CHRON_EMAIL' => 'your@email.com', // Setup alerts in chronMeetup.php 
         'CHRON_TIMEZONE' => 'America/Los_Angeles',
         'CHRON_DEFAULT_STATE' => 'WA',
         'CHRON_DEFAULT_COUNTRY' => 'US'
+
+        // Google Map API
+        'GOOGLE_MAP_KEY' => ''
     );
 ?>
 

@@ -18,7 +18,7 @@
 		<meta property="og:site_name" content="<?php echo($configs->GROUP_NAME); ?>" />
 		<meta property="fb:app_id" content="<?php echo($configs->FACEBOOK_APP_ID); ?>" />
 		<meta name="description" content="<?php echo($configs->GROUP_DESCRIPTION); ?>">
-		<link rel="stylesheet" type="text/css" href="/src/css/coffee.css">
+		<link rel="stylesheet" type="text/css" href="/src/css/coffee.css?v=<?php echo($configs->CSS_VERSION); ?>">
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="/src/js/jquery-3.3.1.min.js"></script>	  
@@ -26,12 +26,12 @@
 		<script type="text/javascript">
 			// setup table sort 
 			$(document).ready(function() 
-						{ 
-								$("#myTable").tablesorter({
-									sortList:[[3,1]]
-								}); 
-						} 
-				); 			
+				{ 
+						$("#myTable").tablesorter({
+							sortList:[[3,1]]
+						}); 
+				} 
+			); 			
 		</script>
 	  <link href="/src/css/bootstrap.min.css" rel="stylesheet">
   	<script src="/src/js/bootstrap.min.js"></script>
@@ -42,7 +42,14 @@
 	$currentPage = "Venues";
 	include("./src/php/menu.php");
 ?>
+
 <div class="container-fluid" style="padding-top:80px">
+
+<div class="input-group">
+  <input class="form-control col-sm-2"
+  id="filterInput" placeholder="filter venues" autofocus>
+</div>
+
     <table id="myTable" class="tablesorter table table-hover">
       <thead>
         <tr style="background-color:#d3d3d3" class="bg-muted">
@@ -55,18 +62,18 @@
       </thead>
       <tbody>
 <?php
-	$sql = "SELECT venue, venueID, city, status, first, last, total FROM vwAllStandardVenues ORDER BY eventDate DESC, venue";
+	$sql = "SELECT venueName, cc_venueID, city, venueStatus, eventFirst, eventLast, eventTotal FROM vwCC_StandardVenues ORDER BY eventLast DESC, venueName";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
-			echo "<tr class='". $row["status"]. "'>";
-			echo "<td class='col0'><a href='cafe.php?id=".$row["venueID"]."'>". $row["venue"]. "</a></td>";
+			echo "<tr class='". $row["venueStatus"]. "' id=''>";
+			echo "<td class='col0'><a href='cafe.php?id=".$row["cc_venueID"]."'>". $row["venueName"]. "</a></td>";
 			echo "<td class='col1'>". $row["city"]. "</td>";
-			echo "<td class='col2'>". $row["first"]. "</td>";
-			echo "<td class='col3'>". $row["last"]. "</td>";
-			echo "<td class='col4'>". $row["total"]. "</td>";
+			echo "<td class='col2'>". $row["eventFirst"]. "</td>";
+			echo "<td class='col3'>". $row["eventLast"]. "</td>";
+			echo "<td class='col4'>". $row["eventTotal"]. "</td>";
 			echo "</tr>";		
 		}
 	} else {
@@ -76,19 +83,10 @@
 ?>
       </tbody>
     </table>
-		<button id="btnActive">Display Inactive</button>
+		
 <p><?php echo $result->num_rows; ?> venues (includes Inactive).</p>
-	<script>
-		// toggle visibility of Inactive Venues 
-		$( "#btnActive" ).click(function() {			
-			$( ".Inactive" ).toggle();
-			$(this).text(function(i, text){
-					return text === "Display Inactive" ? "Hide Inactive" : "Display Inactive";
-			})
-		});
-	</script>
 	</div>
-	 <!-- <script src="/src/js/app.js"></script>  -->
+	<script src="/src/js/filter.js" defer></script>
 <?php 
 	include_once("./src/php/google.php");
 ?>

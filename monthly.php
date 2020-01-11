@@ -33,7 +33,7 @@
 		<meta property="og:site_name" content="<?php echo($configs->GROUP_NAME); ?>" />
 		<meta property="fb:app_id" content="<?php echo($configs->FACEBOOK_APP_ID); ?>" />
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="/src/css/coffee.css">
+		<link rel="stylesheet" type="text/css" href="/src/css/coffee.css?v=<?php echo($configs->CSS_VERSION); ?>">
 		<meta name="robots" content="noindex, follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="/src/js/jquery-3.3.1.min.js"></script>	
@@ -58,7 +58,7 @@
       </thead>
       <tbody>
 <?php
-    $query = "CALL spGetEventsByMonth ('".$fullDate."')";
+    $query = "CALL spGetCCEventsByMonth ('".$fullDate."')";
     //run the store proc
 
     $result = mysqli_query($conn, $query) or die("Query fail: " . mysqli_error());
@@ -68,7 +68,7 @@
         while($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td>". ++$j . "</td>";
-            echo "<td><a href='cafe.php?id=".$row["venueID"]."'>". $row["venueName"] ."</a></td>";
+            echo "<td><a href='cafe.php?id=".$row["cc_venueID"]."'>". $row["venueName"] ."</a></td>";
             echo "<td class='col1'><a href='".$row["eventLink"]."' target='_blank'>". $row["eventDateFormat"]. "</a></td>";
             echo "</tr>";
         }

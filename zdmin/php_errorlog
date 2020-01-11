@@ -1,0 +1,96 @@
+[23-Nov-2019 13:39:39 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:139
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 139
+[23-Nov-2019 13:39:56 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:139
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 139
+[23-Nov-2019 13:40:02 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:139
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 139
+[23-Nov-2019 14:34:28 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:139
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 139
+[23-Nov-2019 14:34:35 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:139
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 139
+[23-Nov-2019 14:34:41 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:139
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 139
+[23-Nov-2019 14:34:45 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:139
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 139
+[23-Nov-2019 14:34:58 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:139
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 139
+[23-Nov-2019 14:35:16 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:139
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 139
+[26-Nov-2019 09:50:14 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:139
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 139
+[01-Dec-2019 16:10:20 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:137
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 137
+[01-Dec-2019 16:10:28 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:137
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 137
+[01-Dec-2019 16:10:36 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:137
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 137
+[07-Dec-2019 14:28:49 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:137
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 137
+[14-Dec-2019 11:53:04 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:137
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 137
+[14-Dec-2019 11:53:14 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:137
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 137
+[14-Dec-2019 11:53:19 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:137
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 137
+[17-Dec-2019 14:18:38 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:137
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 137
+[26-Dec-2019 20:52:20 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:137
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 137
+[30-Dec-2019 14:29:13 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:137
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 137
+[02-Jan-2020 20:34:21 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:137
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 137
+[07-Jan-2020 14:34:36 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:137
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 137
+[07-Jan-2020 14:34:48 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:137
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 137
+[07-Jan-2020 14:36:59 CST6CDT] PHP Fatal error:  Uncaught Error: Call to a member function format() on null in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php:137
+Stack trace:
+#0 {main}
+  thrown in /home/ineedcof/public_html/coffeeclub.app/zdmin/process.php on line 137
