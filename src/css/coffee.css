@@ -36,7 +36,6 @@ td.col4 {
 }
 table.tablesorter tbody tr.Inactive {
   background-color: #d3d3d3 !important;
-  display: none;
 }
 
 /* tables */

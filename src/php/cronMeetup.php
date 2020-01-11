@@ -1,4 +1,9 @@
 <?php
+    // 2019: Meetup disabled access to the API, so adding an exit() call.
+    // If they decide to open it up again, we can remove this line. 
+
+    exit();
+    
     // This page will be executed by a cron job once a day. 
     // It will check Meetup for newly completed Meetup Events.
     // The Event will be added to our Database for reporting. 
@@ -48,109 +53,112 @@ for ($j=$offset; $j<=$offset+1 ;$j++)
     foreach ($response->results as $event) 
         {
             $thisEventID = $event->id;    
-            $sql0 = 'SELECT eventID AS EventID FROM events WHERE eventID ='.$thisEventID;
-            $result = $conn->query($sql0);           
-            if ($result->num_rows == 0) {                           
-                $thisVenueID = $event->venue->id;
-                $thisEventLink = $event->event_url;
-                $thisEPOCH = $event->time / 1000;
-                $thisGMT = gmdate('r', $thisEPOCH);
-                $TimeZoneNameFrom="UTC";
-                $TimeZoneNameTo=$configs->CRON_TIMEZONE;
-                $thisEventDate =  date_create($thisGMT, new DateTimeZone($TimeZoneNameFrom))
-                     ->setTimezone(new DateTimeZone($TimeZoneNameTo))->format("Y-m-d H:i:s");
-                $thisEventName = mysqli_real_escape_string($conn, $event->name);
+            // Confirm the eventID is a number. 
+            // The Meetup API has returned corrupt data before (255268884).
+            if (is_numeric($thisEventID)) {
+                $sql0 = 'SELECT eventID AS EventID FROM events WHERE eventID ='.$thisEventID;
+                $result = $conn->query($sql0);           
+                if ($result->num_rows == 0) {                           
+                    $thisVenueID = $event->venue->id;
+                    $thisEventLink = $event->event_url;
+                    $thisEPOCH = $event->time / 1000;
+                    $thisGMT = gmdate('r', $thisEPOCH);
+                    $TimeZoneNameFrom="UTC";
+                    $TimeZoneNameTo=$configs->CRON_TIMEZONE;
+                    $thisEventDate =  date_create($thisGMT, new DateTimeZone($TimeZoneNameFrom))
+                        ->setTimezone(new DateTimeZone($TimeZoneNameTo))->format("Y-m-d H:i:s");
+                    $thisEventName = mysqli_real_escape_string($conn, $event->name);
 
-                echo "<p>Adding: ".$thisEventName."</p>";
+                    echo "<p>Adding: ".$thisEventName."</p>";
 
-                // #1 Insert to events 
-                $sql = "INSERT INTO events (
-                        eventID, 
-                        eventLink, 
-                        eventName, 
-                        eventDate, 
-                        venueID)
-                    VALUES (".$thisEventID.",'".$thisEventLink."','".$thisEventName."','".$thisEventDate."',".$thisVenueID.")";
-                
-                if ($conn->query($sql) === TRUE) {
-			        echo "<p>Event Added: ".$thisEventName."  @".$thisEventDate. "</p>";
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                }              
-                // #2 Query VenueMapped                                                                  
-                $sql2 = "SELECT venueIDmapped FROM venuesmapped WHERE venueID = ".$thisVenueID;
-                $result = $conn->query($sql2);
-	            if ($result->num_rows > 0) {
-                    // An existing venue was found. Take the venueIDmapped as the venueID going forward. 
-                    $row = $result->fetch_assoc();
-                    $thisVenueID = $row["venueIDmapped"];
-                    //echo "<p>Venue Found!</p>";
-                } else{
-                    echo "<p>Venue NOT Found. Adding.</p>";
-                    // This is a new venue. Add row to venuemapped. Assume all is well with data.
-                    $sql3 = "INSERT INTO venuesmapped (venueID, venueIDMapped) VALUES (".$thisVenueID.", ".$thisVenueID.")";
-                    $conn->query($sql3);
-
-                    $thisLat = $event->venue->lat;
-                    $thisLon = $event->venue->lon;
-                    $thisCity = mysqli_real_escape_string($conn, $event->venue->city);
-                    $thisVenueName = mysqli_real_escape_string($conn, $event->venue->name);
-
-                    if (isset($event->venue->zip)) { 
-                        $thisZip = $event->venue->zip;    
+                    // #1 Insert to events 
+                    $sql = "INSERT INTO events (
+                            eventID, 
+                            eventLink, 
+                            eventName, 
+                            eventDate, 
+                            venueID)
+                        VALUES (".$thisEventID.",'".$thisEventLink."','".$thisEventName."','".$thisEventDate."',".$thisVenueID.")";
+                    
+                    if ($conn->query($sql) === TRUE) {
+                        echo "<p>Event Added: ".$thisEventName."  @".$thisEventDate. "</p>";
                     } else {
-                        $thisZip = '';
-                    }
-                    if (isset($event->venue->state)) { 
-                        $thisState = strtoupper($event->venue->state);    
-                    } else {
-                        $thisState = $configs->CRON_DEFAULT_STATE;
-                    }
-                    if (isset($event->venue->country)) { 
-                        $thisCountry = strtoupper($event->venue->country);    
-                    } else {
-                        $thisCountry = $configs->CRON_DEFAULT_COUNTRY;
-                    }                                                          
-                    $thisAddress1 = $event->venue->address_1;
+                        echo "Error: " . $sql . "<br>" . $conn->error;
+                    }              
+                    // #2 Query VenueMapped                                                                  
+                    $sql2 = "SELECT venueIDmapped FROM venuesmapped WHERE venueID = ".$thisVenueID;
+                    $result = $conn->query($sql2);
+                    if ($result->num_rows > 0) {
+                        // An existing venue was found. Take the venueIDmapped as the venueID going forward. 
+                        $row = $result->fetch_assoc();
+                        $thisVenueID = $row["venueIDmapped"];
+                        //echo "<p>Venue Found!</p>";
+                    } else{
+                        echo "<p>Venue NOT Found. Adding.</p>";
+                        // This is a new venue. Add row to venuemapped. Assume all is well with data.
+                        $sql3 = "INSERT INTO venuesmapped (venueID, venueIDMapped) VALUES (".$thisVenueID.", ".$thisVenueID.")";
+                        $conn->query($sql3);
 
-                    if (isset($event->venue->address_2)) { 
-                        $thisAddress2 = $event->venue->address_2;    
-                    } else {
-                        $thisAddress2 = '';
+                        $thisLat = $event->venue->lat;
+                        $thisLon = $event->venue->lon;
+                        $thisCity = mysqli_real_escape_string($conn, $event->venue->city);
+                        $thisVenueName = mysqli_real_escape_string($conn, $event->venue->name);
+
+                        if (isset($event->venue->zip)) { 
+                            $thisZip = $event->venue->zip;    
+                        } else {
+                            $thisZip = '';
+                        }
+                        if (isset($event->venue->state)) { 
+                            $thisState = strtoupper($event->venue->state);    
+                        } else {
+                            $thisState = $configs->CRON_DEFAULT_STATE;
+                        }
+                        if (isset($event->venue->country)) { 
+                            $thisCountry = strtoupper($event->venue->country);    
+                        } else {
+                            $thisCountry = $configs->CRON_DEFAULT_COUNTRY;
+                        }                                                          
+                        $thisAddress1 = $event->venue->address_1;
+
+                        if (isset($event->venue->address_2)) { 
+                            $thisAddress2 = $event->venue->address_2;    
+                        } else {
+                            $thisAddress2 = '';
+                        }
+                        
+                        // Add venue to venues
+                        $sql4 = "INSERT INTO venues (venueID, lat, lon, zip, city, venueName, state, 
+                            country, address_1, address_2) 
+                            VALUES (".$thisVenueID.",".$thisLat.",".$thisLon.",'".$thisZip."','".$thisCity."','".$thisVenueName."',
+                                '".$thisState."','".$thisCountry."','".$thisAddress1."','".$thisAddress2."')";
+                        $conn->query($sql4);
+
+                        // Add venue to venuesclean with 2 more fields. 
+                        // All venues are considered 'Standard'. If venue is a private resident or non-standard, change to 'Other' later.
+                        $sql5 = "INSERT INTO venuesclean (venueID, lat, lon, zip, city, VenueName, state, 
+                                country, address_1, address_2, venueType, venueStatus)
+                            SELECT venueID, lat, lon, zip, city, VenueName, state, country, address_1, address_2, 'Standard', 'Active'
+                            FROM venues
+                            WHERE venueID = ".$thisVenueID;
+                        $conn->query($sql5);
+                        
+                        // I only want to receive an alert when a new venue is added.
+                        $mailMessage = $thisVenueName." [". $event->venue->name ."] added as a new venue: ".$thisVenueID;
+                        mail($configs->CRON_EMAIL,"Meetup Venue Alert",$mailMessage);
                     }
                     
-                    // Add venue to venues
-                    $sql4 = "INSERT INTO venues (venueID, lat, lon, zip, city, venueName, state, 
-                        country, address_1, address_2) 
-                        VALUES (".$thisVenueID.",".$thisLat.",".$thisLon.",'".$thisZip."','".$thisCity."','".$thisVenueName."',
-                            '".$thisState."','".$thisCountry."','".$thisAddress1."','".$thisAddress2."')";
-                    $conn->query($sql4);
-
-                    // Add venue to venuesclean with 2 more fields. 
-                    // All venues are considered 'Standard'. If venue is a priate resident or non-standard, change to 'Other' later.
-                    $sql5 = "INSERT INTO venuesclean (venueID, lat, lon, zip, city, VenueName, state, 
-                            country, address_1, address_2, venueType, venueStatus)
-                        SELECT venueID, lat, lon, zip, city, VenueName, state, country, address_1, address_2, 'Standard', 'Active'
-                        FROM venues
-                        WHERE venueID = ".$thisVenueID;
-                    $conn->query($sql5);
-                    
-                    // I only want to receive an alert when a new venue is added.
-                    $mailMessage = $thisVenueName." [". $event->venue->name ."] added as a new venue: ".$thisVenueID;
-                    mail($configs->CRON_EMAIL,"Meetup Venue Alert",$mailMessage);
+                    // #3 Insert to eventsclean 
+                    $sql6 = "INSERT INTO eventsclean (
+                            eventID, 
+                            eventLink, 
+                            eventName, 
+                            eventDate, 
+                            venueID)
+                        VALUES (".$thisEventID.",'".$thisEventLink."','".$thisEventName."','".$thisEventDate."',".$thisVenueID.")";
+                    $conn->query($sql6);
                 }
-                
-                // #3 Insert to eventsclean 
-                $sql6 = "INSERT INTO eventsclean (
-                        eventID, 
-                        eventLink, 
-                        eventName, 
-                        eventDate, 
-                        venueID)
-                    VALUES (".$thisEventID.",'".$thisEventLink."','".$thisEventName."','".$thisEventDate."',".$thisVenueID.")";
-                $conn->query($sql6);
             }
-             
         }
 }
 $conn->close();

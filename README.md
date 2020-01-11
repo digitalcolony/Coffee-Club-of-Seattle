@@ -6,18 +6,21 @@ Documentation and code for the Meetup group Coffee Club of Seattle.
 
 ## GitBook
 
-We have a GitBook with all our documention at:
+We have a GitBook with all our documentation at:
 [coffee-club-of-seattle.gitbooks.io/pages/](https://coffee-club-of-seattle.gitbooks.io/pages/)
 
 ## Code
 
-Unlike most Meetup groups, historical data is very important to the Coffee Club of Seattle Meetup. Since our mission to to visit many different coffee venues, our organizers need a way to know where we have been in the past.
+Unlike most Meetup groups, historical data is very important to the Coffee Club of Seattle Meetup. Since our mission to visit many different coffee venues, our organizers need a way to know where we have been in the past.
 
 Unfortunately, Meetup makes it next to impossible to gather that historical data for more than a few months, let alone data going back to 2006. The good news is Meetup has an API available that lets us query our historical data, which we use for reporting.
 
 ### Meetup API and Cron Job
 
-At 1 AM daily, a cron job loads a webpage that talks to Meetup API to see if any new events have occurred and if so, did they occur at a new or existing venue. If we receive new data, our MySQL database is updated.
+UPDATE (September 2019): Meetup is no longer allowing access to their API from non-PRO accounts. You need
+a PRO account and to have your OAuth request approved.
+
+Every day a cron job loads a webpage that talks to Meetup API to see if any new events have occurred and if so, did they occur at a new or existing venue. If we receive new data, our MySQL database is updated.
 
 ### Database Structure
 
