@@ -13,33 +13,28 @@ We have a GitBook with all our documentation at:
 
 Unlike most Meetup groups, historical data is very important to the Coffee Club of Seattle Meetup. Since our mission to visit many different coffee venues, our organizers need a way to know where we have been in the past.
 
-Unfortunately, Meetup makes it next to impossible to gather that historical data for more than a few months, let alone data going back to 2006. The good news is Meetup has an API available that lets us query our historical data, which we use for reporting.
+Unfortunately, Meetup makes it next to impossible to gather that historical data for more than a few months, let alone data going back to 2006. 
 
 ### Meetup API and Cron Job
 
 UPDATE (September 2019): Meetup is no longer allowing access to their API from non-PRO accounts. You need
 a PRO account and to have your OAuth request approved.
 
-Every day a cron job loads a webpage that talks to Meetup API to see if any new events have occurred and if so, did they occur at a new or existing venue. If we receive new data, our MySQL database is updated.
+So now we web-scrape the data we need from Meetup. See this repo for more details:
+[scrape-meetup](https://github.com/digitalcolony/scrape-meetup)
 
 ### Database Structure
 
-There are 5 tables in our CoffeeClub Database.
-
-1.  events
-2.  venues
-3.  eventsclean
-4.  venuesclean
-5.  venuesmapped
-
-The events and venues table are pulled directly from Meetup and if they had a clean dataset, that is all we would need. But, the Meetup database is full of duplicate entries for venues and incomplete data. To resolve this issue, we maintain a clean version of the venue data with additional fields. The venuesmapped table solves the duplicate entry problem by pointing all copies of a venue to a single entry. The eventsclean table is rarely edited.
+TODO: Add detail on new database structure.
 
 ### Venue Report
 
 The Venue Report can be viewed at
 [coffeeclub.app](https://coffeeclub.app/).
 
-Each column is sortable both ascending and descending. Coffee venues known to be Inactive are not visible by default, but can be added to the report by clicking the Show Inactive button.
+Each column is sortable both ascending and descending. It also has a filter option at the top. Coffee venues
+that are known to be out of business will appear with a gary background. Non-coffee venues are removed from
+the report. 
 
 Clicking on a Venue Name will load the Detail Report for that venue.
 
@@ -49,7 +44,7 @@ The Detail Report lists all Meetup events for that venue with links to the page 
 
 ### Map
 
-The Map uses the latitude and longitude on the venue, which is returned by the Meetup API and stored in the venues and venuesclean tables. Our map pulls from the venuesclean table. The number on the map marker for the venue indicates the number of Meetups the Coffee Club has held at that venue. Inactive and non-coffee venues are not displayed on the map.
+The Map uses the latitude and longitude on the venue. The number on the map marker for the venue indicates the number of Meetups the Coffee Club has held at that venue. Inactive and non-coffee venues are not displayed on the map.
 
 ### Stats Report
 
